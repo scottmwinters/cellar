@@ -18,4 +18,6 @@ public class Location {
 
     @Column(nullable = false)
     private String name;
+
+    private int bit_shift;
 }

@@ -9,6 +9,7 @@ import com.sips.cellar.service.InventoryService;
 import com.sips.cellar.service.LightsService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -72,6 +73,12 @@ public class BeverageController {
     @CrossOrigin(origins = {"http://192.168.86.71:3000", "http://localhost:3000"})
     public void importShit() {
         inventoryService.importAllTheBeers();
+    }
+
+    @GetMapping("/turnt")
+    @CrossOrigin(origins = {"http://192.168.86.71:3000", "http://localhost:3000"})
+    public void turnt() {
+        lightsService.lightsOnForInventoryIds(Collections.singletonList(7L));
     }
 
 }
