@@ -68,27 +68,26 @@ void loop() {
         /* the LEDs snake back-and-forth in the shelves, such that the 4th slot is directly below the 3rd, not below the first.
         0 | 1 | 2
         3 | 4 | 5
-        becomes
-        0 | 1 | 2
-        5 | 4 | 3        
-        */ 
+        8   7   6
+        9   10  11
+        14  13 12        
+    
+        // // swap bits 3 and 5
+        // int temp = bits[3];
+        // bits[3] = bits[5];
+        // bits[5] = temp;
 
-        // swap bits 3 and 5
-        int temp = bit_array[3];
-        bit_array[3] = bit_array[5];
-        bit_array[5] = temp;
-
-        // swap bits 9 and 11
-        temp = bit_array[9];
-        bit_array[9] = bit_array[11];
-        bit_array[11] = temp;
+        // // swap bits 9 and 11
+        // temp = bits[9];
+        // bits[9] = bits[11];
+        // bits[11] = temp;
 
         for (int i = 0; i < 16; i++) {
             bit_array[i] = bits[i];
+            Serial.print(bits[i]);
         }
-
-
       }
+      request = "0";
     }
 
     // set the requested LEDs to blue
@@ -96,7 +95,7 @@ void loop() {
       if(bit_array[i] == 1) {
         int startLed = i * 6;
         for(int j = 0; j < 6; j++) {
-          leds[startLed + j] = CRGB(0, 0, 255);
+          leds[startLed + j] = CRGB::Purple;
         }
       }
     }
@@ -118,7 +117,7 @@ void loop() {
     FastLED.show();
 
     // close the connection
-    client.stop();
+    client.stop(); 
     Serial.println("Client disconnected");
   }
 }
