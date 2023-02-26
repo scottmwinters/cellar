@@ -57,8 +57,6 @@ public class Beverage {
         this.region = region;
     }
 
-    // constructors, getters and setters
-
     @Override
     public int hashCode() {
         return Objects.hash(name, maker, style, variant, size, vintage);

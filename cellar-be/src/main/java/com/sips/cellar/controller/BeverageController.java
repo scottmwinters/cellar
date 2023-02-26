@@ -34,39 +34,13 @@ public class BeverageController {
         return inventoryService.getInventoryByType(type);
     }
 
-//    @GetMapping("/beverages")
-//    @CrossOrigin(origins = {"http://192.168.86.71:3000", "http://localhost:3000"})
-//    public List<Beverage_old> getBeverages(@RequestParam(required = false) String type) {
-//        if(type == null)
-//            return beverageService.getBeverages();
-//        return beverageService.getBeveragesByType(type);
-//
-//    }
-//
-//    @PostMapping
-//    @CrossOrigin(origins = {"http://192.168.86.71:3000", "http://localhost:3000"})
-//    public Beverage_old create(@RequestBody Beverage_old beverageOld) {
-//        System.out.println("adding new beverage: " + beverageOld);
-//        return beverageService.create(beverageOld);
-//    }
-//
     @PostMapping("/drink")
     @CrossOrigin(origins = {"http://192.168.86.71:3000", "http://localhost:3000"})
     public void drink(@RequestBody int beverageId) {
+
         System.out.println("removing 1 beverage: " + beverageId);
-//        inventoryService.drinkOneById(beverageId);
-    }
+        //TODO: inventoryService.drinkOneById(beverageId);
 
-    @GetMapping("/shit")
-    @CrossOrigin(origins = {"http://192.168.86.71:3000", "http://localhost:3000"})
-    public void importShit() {
-        inventoryService.importAllTheBeers();
-    }
-
-    @GetMapping("/turnt")
-    @CrossOrigin(origins = {"http://192.168.86.71:3000", "http://localhost:3000"})
-    public void turnt() {
-        lightsService.lightsOnForInventoryIds(Collections.singletonList(7L));
     }
 
 }

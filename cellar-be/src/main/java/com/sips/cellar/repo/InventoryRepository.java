@@ -17,6 +17,4 @@ public interface InventoryRepository extends JpaRepository<InventoryItem, Long> 
 
     @Query("SELECT i FROM InventoryItem i JOIN FETCH i.beverage b WHERE b.style.type = :type")
     List<InventoryItem> findByBeverageType(@Param("type") String typeName);
-
-    // define any custom queries or methods here
 }

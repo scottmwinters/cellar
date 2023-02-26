@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface VariantRepository extends JpaRepository<Variant, Long> {
-    // define any custom queries or methods here
 }

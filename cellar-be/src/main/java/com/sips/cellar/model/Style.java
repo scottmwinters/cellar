@@ -21,6 +21,4 @@ public class Style {
     private String name;
 
     private String subStyle;
-
-    // constructors, getters and setters
 }

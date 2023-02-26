@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BeverageRepository extends JpaRepository<Beverage, Long> {
-    // define any custom queries or methods here
 }

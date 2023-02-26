@@ -17,6 +17,4 @@ public class Variant {
     private Long id;
 
     private String name;
-
-    // constructors, getters and setters
 }

@@ -19,29 +19,3 @@ public class BeverageServiceImpl implements BeverageService {
         beverageRepository.save(beverage);
     }
 }
-//    private final BeveragesRepository_old beveragesRepositoryOld;
-//
-//    public BeverageServiceImpl(BeveragesRepository_old beveragesRepositoryOld) {
-//        this.beveragesRepositoryOld = beveragesRepositoryOld;
-//    }
-//
-//    @Override
-//    public Beverage_old create(Beverage_old beverageOld) {
-//        return beveragesRepositoryOld.save(beverageOld);
-//    }
-//
-//    @Override
-//    public List<Beverage_old> getBeverages() {
-//        return beveragesRepositoryOld.findAllOrderByMakerAsc();
-//    }
-//
-//    @Override
-//    public List<Beverage_old> getBeveragesByType(String type) {
-//        return beveragesRepositoryOld.findAllByTypeOrderByMakerAsc(type);
-//    }
-//
-//    @Override
-//    public void drinkOneById(Integer id) {
-//        beveragesRepositoryOld.drinkOne(id);
-//    }
-//}
