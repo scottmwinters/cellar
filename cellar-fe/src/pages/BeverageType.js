@@ -77,9 +77,7 @@ const BeverageType = (props) => {
     });
 
   const bevType = props.name;
-  console.log("INVENTORY ITEMS: " + inventoryItems);
   inventoryItems.forEach((element) => console.log(element.beverage.style.name));
-  // array1.forEach(element => console.log(element));
   const uniqueMakers =
     inventoryItems.length > 0 &&
     Array.from(
@@ -123,7 +121,6 @@ const BeverageType = (props) => {
           .map((inventoryItems) => inventoryItems.beverage.region.name)
       )
     ).sort();
-  console.log("REGIIINNNN: " + uniqueRegions);
 
   return (
     <div className="container">

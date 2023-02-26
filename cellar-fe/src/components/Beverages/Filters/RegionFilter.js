@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Filter.css";
+import Card from "../../UI/Card";
 
 const RegionFilter = (props) => {
   const [selectedRegion, setSelectedRegion] = useState('');
@@ -19,6 +20,10 @@ const RegionFilter = (props) => {
     setSelectedRegion(event.target.value);
   };
 
+  const handleClickNewRegion = (itemId) => {
+    console.log("region");
+  };
+
   return (
     <div className="container">
       <div className="title">
@@ -33,6 +38,16 @@ const RegionFilter = (props) => {
             </option>
           ))}
       </select>
+      <Card className="add-new">
+        <div
+          className="add-custom"
+          onClick={() => handleClickNewRegion(props.id)}
+        >
+          <h2>
+            <img src="/plus.png" alt="plus" /> Add Custom Type
+          </h2>
+        </div>
+      </Card>
     </div>
   );
 };

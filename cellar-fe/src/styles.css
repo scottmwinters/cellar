@@ -1,11 +1,14 @@
 * {
     box-sizing: border-box;
+    font-family: 'Cuprum';
+    font-weight: 400;
 }
 
 body {
     margin: 0;
     background-color: #040618;
     font-family: "cuprum";
+    font-weight: 400;
 }
 
 .container {
@@ -29,7 +32,7 @@ body {
   }
 
 .nav {
-    background-color: #3B3A81;
+    background-color: rgb(59, 58, 129);
     color: white;
     display: flex;
     justify-content: space-between;
@@ -44,7 +47,7 @@ body {
     margin: 0;
     list-style: none;
     display: flex;
-    background-color: #8C8BC1;
+    background-color: rgb(140, 139, 193);
     border-radius: 30px;
 }
 

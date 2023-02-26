@@ -2,6 +2,7 @@ package com.sips.cellar.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.lang.Nullable;
 
 @Entity
 @Table(name = "Locations")
@@ -19,5 +20,6 @@ public class Location {
     @Column(nullable = false)
     private String name;
 
-    private int bit_shift;
+    @Nullable
+    private Integer bit_shift;
 }

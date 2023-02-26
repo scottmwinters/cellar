@@ -1,86 +1,134 @@
+* {
+  font-family: 'Cuprum';
+  font-weight: 400;
+}
+
+.card__beverage-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.list_item {
+  display: inline;
+  display: flex;
+  flex-direction: row;
+}
+
 .beverage-item {
-    display: flex;
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+  margin-right: 1.5rem;
+  background-color: rgb(140, 139, 193);
+  width: 800px;  flex-basis: 66.66%;
+  display: flex;
+}
+
+.beverage-item__description {
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  /* gap: 1rem; */
+  align-items: flex-end;
+  flex-flow: column-reverse;
+  justify-content: flex-start;
+  flex: 1;
+}
+
+.beverage-item h2 {
+  font-size: 1rem;
+  flex: 1;
+  margin: 0 1rem;
+  color: white;
+}
+
+.drink-one {
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+  text-align: center;
+  flex-wrap: wrap;
+  transition: all 0.3s ease-in-out;
+  background-color: #4C49D7;
+  margin-top: 25px;
+  white-space: nowrap;
+  position: relative;
+}
+.style-name {
+  position: relative; /* set position to relative */
+}
+
+.drink-one img {
+  width: 20px;
+  height: 20px;
+  position: absolute; /* set position to absolute */
+  bottom: 0; /* adjust the bottom property to position the image in the bottom */
+  right: 0; /* adjust the right property to position the image in the right */
+}
+
+.dwrap {
+  display: inline-block;
+  margin: 10px;
+  height:auto;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+@media (min-width: 580px) {
+  .beverage-item__maker {
+    text-align: left;
+    font-size: 18px;
+    background-color: rgb(140, 139, 193);
+    display: block;
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem;
-    margin: 1rem 0;
-    background-color: #4b4b4b;
-  }
-  
-  .beverage-item__description {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-end;
-    flex-flow: column-reverse;
-    justify-content: flex-start;
-    flex: 1;
-  }
-  
-  .beverage-item h2 {
-    color: rgb(0, 107, 146);
-    font-size: 1rem;
-    flex: 1;
-    margin: 0 1rem;
-    color: white;
-  }
-  
-  .beverage-item__name {
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    background-color: rgb(0, 107, 146);
-    border: 1px solid white;
-    padding: 0.5rem;
-    border-radius: 12px;
-  }
-  
-  .drink-one {
-    width: 80px;
-    min-width: 20px;
-    height: auto;
-    /* margin: 5px; */
-    border: 1px solid #4b4b4b;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-right: 1.5rem;
+    width: 800px;  flex-basis: 66.66%;
+    /* display: flex; */
     border-radius: 10px;
-    box-shadow: 0px 0px 5px #ccc;
-    text-align: center;
-    flex-wrap: wrap;
-    transition: all 0.3s ease-in-out;
-    background-color: rgb(0, 107, 146);
+  }
+  
+  .beverage-item__maker_name {
+    color: white;
+    display: flex;
+    justify-content: space-between;
   }
 
-  .dwrap{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: #ffffff;
-    width: auto;
-    margin: 10px;
+  .beverage_item__quantity {
+    text-align: right;
   }
 
-  .drink {
+  .beverage-item__name {
+    color: rgb(255, 255, 255);
+    font-size: 32px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 0;
+    
+  }
+  
+  .beverage-item__name h2 {
+    color: rgb(255, 255, 255);
+    display: inline;
+    padding: 0;
+  }
+
+  .beverage-item__description h2 {
+    font-size: 1.25rem;
+  }
+
+  .beverage-item__info {
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    margin-bottom: 0px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: #4b4b4b;
+    justify-content: space-between;
   }
-  
-  @media (min-width: 580px) {
-    .beverage-item__maker {
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-start;
-      flex: 1;
-    }
-  
-    .beverage-item__description h2 {
-      font-size: 1.25rem;
-    }
-  
-    .beverage-item__info {
-      font-size: 18px;
-      font-weight: bold;
-      color: rgb(0, 0, 0);
-      margin-bottom: 10px;
-    }
-  }
+}

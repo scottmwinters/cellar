@@ -4,9 +4,5 @@ import java.util.List;
 
 public interface LightsService {
 
-    String turnOn();
-    String turnOff();
-    void turnt();
-
-    void lightsOnForInventoryIds(List<Long> inventoryIds);
+    List<Long> lightsOnForInventoryIds(List<Long> inventoryIds);
 }

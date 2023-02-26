@@ -15,6 +15,17 @@ const StyleFilter = (props) => {
     }
   };
 
+  const handleClickNewStyle = (itemId) => {
+    console.log("DRINK");
+    props.onDrinkBeverage(itemId);
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify([itemId.toString()]),
+    };
+    fetch("http://192.168.86.71:8080/cellar/drink", requestOptions);
+  };
+
   return (
     <div className="container">
       <div className="title">
@@ -37,46 +48,12 @@ const StyleFilter = (props) => {
           </div>
         ))}
       </ul>
+      <Card className="add-new">
+          <div className="add-custom" onClick={() => handleClickNewStyle(props.id)}>
+            <h2><img src="/plus.png" alt="plus" /> Add Custom Type</h2>
+          </div>
+        </Card>
     </div>
   );
 };
 export default StyleFilter;
-
-/*
-return (
-    <ul className="fill-list">
-      <h2 >Type</h2>
-      {props.styles.map((style) => (
-        <Card
-          key={style}
-          className={`fill ${
-            selected.includes(style) ? "selected" : "unselected"
-          }`}
-          onClick={() => handleClick(style)}
-        >
-          <div className="style-name" onClick={() => handleClick(style)}>
-            <h2>{style}</h2>
-          </div>
-        </Card>
-      ))}
-    </ul>
-  );
-
-/*
-return (
-    <ul className="style-list">
-      {props.styles.map((style) => (
-        <div
-          key={style}
-          className={`style ${
-            selected.includes(style) ? "selected" : "unselected"
-          }`}
-          onClick={() => handleClick(style)}
-        >
-          <h2>{style}</h2>
-        </div>
-      ))}
-    </ul>
-  );
-};
-*/

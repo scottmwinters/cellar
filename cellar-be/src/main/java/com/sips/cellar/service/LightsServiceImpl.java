@@ -17,42 +17,23 @@ public class LightsServiceImpl implements LightsService {
         this.locationRepository = locationRepository;
     }
 
-    @Override
-    public String turnOn() {
-        String uri = "http://192.168.86.194/H";
-        RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(uri, String.class);
-        return result;
-    }
-    @Override
-    public String turnOff() {
-        String uri = "http://192.168.86.194/L";
-        RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(uri, String.class);
-        return result;
-    }
-
-    @Override
-    public void turnt() {
-        String uri = "http://192.168.86.199/?0002";
-        System.out.println(uri);
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getForObject(uri, String.class);
-//        return result;
-    }
-
     private String getHex(List<Location> locations) {
-        int hex = locations.stream().mapToInt(loc -> (1 << loc.getBit_shift())).reduce(0x0000, (a, b) -> a | b);
-        return String.format("%04X", hex);
+        int hex = locations.stream().mapToInt(loc -> (loc.getBit_shift() != null ? 1 << loc.getBit_shift() : 65536)).reduce(0x0000, (a, b) -> a | b);
+        return hex < 65536 ? String.format("%04X", hex) : null;
     }
 
     @Override
-    public void lightsOnForInventoryIds(List<Long> inventoryIds) {
+    public List<Long> lightsOnForInventoryIds(List<Long> inventoryIds) {
         String hex = getHex(locationRepository.findLocationsByInventoryItemIds(inventoryIds));
-        String uri = "http://192.168.86.199/?" + hex;
-        System.out.println(uri);
-        RestTemplate restTemplate = new RestTemplate();
-        //TODO: handle the response from the controller. which also needs the controller to send a proper response.
-        restTemplate.getForObject(uri, String.class);
+        System.out.println("hex: " + hex);
+        if(hex != null) {
+            String uri = "http://192.168.86.199/?" + hex;
+            System.out.println(uri);
+            RestTemplate restTemplate = new RestTemplate();
+            //TODO: handle the response from the controller. which also needs the controller to send a proper response.
+            restTemplate.getForObject(uri, String.class);
+            return inventoryIds;
+        }
+        return null;
     }
 }

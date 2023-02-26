@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: "cuprum";
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

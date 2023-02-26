@@ -45,17 +45,30 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public void importAllTheBeers() {
-        Map<String, Region> regions = regionRepository.findAll().stream().collect(Collectors.toMap(Region::getName, Function.identity()));
+        Map<String, Region> regions = regionRepository.findAll().stream().collect(Collectors.toMap(r -> r.getName() + r.getSubRegion(), Function.identity()));
         Map<String, Name> names = nameRepository.findAll().stream().collect(Collectors.toMap(Name::getName, Function.identity()));
         Map<String, Maker> makers = makerRepository.findAll().stream().collect(Collectors.toMap(Maker::getName, Function.identity()));
-        Map<String, Style> styles = styleRepository.findAll().stream().collect(Collectors.toMap(Style::getSubStyle, Function.identity()));
+        Map<String, Style> styles = styleRepository.findAll().stream().collect(Collectors.toMap(s -> s.getName() + s.getSubStyle(), Function.identity()));
         Map<String, Location> locations = locationRepository.findAll().stream().collect(Collectors.toMap(Location::getName, Function.identity()));
         Map<Double, Size> sizes = sizeRepository.findAll().stream().collect(Collectors.toMap(Size::getAmount, Function.identity()));
         Map<String, Variant> variants = variantRepository.findAll().stream().collect(Collectors.toMap(Variant::getName, Function.identity()));
 //        Map<Long, Name> namesById = beverageRepository.findAll().stream().collect(Collectors.toMap(Name::getId, Function.identity()));
-        Map<String, Beverage> beverages = beverageRepository.findAll().stream().collect(Collectors.toMap(s -> s.getName().getName() + s.getSize().getAmount() + (s.getVariant() != null? s.getVariant().getName() : "null") + s.getVintage(), Function.identity()));
-
-        System.out.println(names.entrySet());
+        Map<String, Beverage> beverages = beverageRepository.findAll().stream().collect(Collectors.toMap(s -> (s.getName() != null && s.getName().getName() != null ? s.getName().getName() : "null" + s.getMaker().getName()) + s.getSize().getAmount() + (s.getVariant() != null? s.getVariant().getName() : "null") + s.getVintage(), Function.identity()));
+//        List<Beverage> beverages = new ArrayList<>();
+//        System.out.println(names.entrySet());
+//        beverages.add(new Beverage(names.get(null),makers.get("Weingut Frank"),styles.get("Grüner Veltlinernull"),12.5,null,sizes.get(750.0),2021, regions.get("Austrianull")));
+//        beverages.add(new Beverage(names.get(null),makers.get("Matiné Grasso Fratelli "),styles.get("Barbera D'albanull"),16.5,null,sizes.get(750.0),2017, regions.get("ItalyPiedmont")));
+//        beverages.add(new Beverage(names.get("Predicador"),makers.get("Vendages Manuelles"),styles.get("François Cazinnull"),14.5,null,sizes.get(750.0),2020, regions.get("FranceLoire Valley")));
+//        beverages.add(new Beverage(names.get("Mas des Huppes"),makers.get("Bodega Contador"),styles.get("Tempranillonull"),14.5,null,sizes.get(750.0),2014, regions.get("SpainRioja")));
+//        beverages.add(new Beverage(names.get(null),makers.get("Saint Chinian"),styles.get("Red Blendnull"),14.5,null,sizes.get(750.0),2019, regions.get("FranceD'origine Protégée")));
+//        beverages.add(new Beverage(names.get("Dal Peduncolo"),makers.get("Fontaleoni"),styles.get("Vernaccianull"),12.5,null,sizes.get(750.0),2021, regions.get("ItalianSan Gimignano, Tuscany")));
+//        beverages.add(new Beverage(names.get(null),makers.get("Le Vigne Di Zamó"),styles.get("Rossonull"),14.0,null,sizes.get(750.0),2017, regions.get("ItalyFriuli")));
+//        beverages.add(new Beverage(names.get(null),makers.get("Jules Taylor"),styles.get("Pinot Noirnull"),13.5,null,sizes.get(750.0),2919, regions.get("New ZealandMarlborough")));
+//        beverages.add(new Beverage(names.get(null),makers.get("Artezin"),styles.get("Zinfandelnull"),14.8,null,sizes.get(750.0),2019, regions.get("USCA - Mendocino")));
+//        beverages.add(new Beverage(names.get(null),makers.get("Vidal-Fleury"),styles.get("Red Blendnull"),14.5,null,sizes.get(750.0),2019, regions.get("FranceCôtes du Rhône, Rhône Valley")));
+//        beverages.add(new Beverage(names.get(null),makers.get("Villa Appalaccia"),styles.get("Dolcettonull"),14.1,null,sizes.get(750.0),2022, regions.get("USVirginia")));
+//        beverages.add(new Beverage(names.get(null),makers.get("Chandon"),styles.get("Brutnull"),12.0,null,sizes.get(750.0),2022, regions.get("USCalifornia")));
+//        beverages.add(new Beverage(names.get("Impérial"),makers.get("Moët & Chandon"),styles.get("Champagnenull"),12.0,null,sizes.get(750.0),2022, regions.get("FranceEpernay")));
 //        List<Beverage> beverages = new ArrayList<>();
         //public Beverage(Name name, Maker maker, Style style, Double abv, Variant variant, Size size, Integer vintage, Region region) {
 //        beverages.add(new Beverage(names.get("Bon Bon Cerise"),makers.get("Avery"),styles.get("BBA Imperial Stout"),14.6, null,sizes.get(12.0),2019, regions.get("CO")));
@@ -174,7 +187,7 @@ public class InventoryServiceImpl implements InventoryService {
 
         List<InventoryItem> inventoryItems = new ArrayList<>();
         Date date = new Date(System.currentTimeMillis());
-        inventoryItems.add(new InventoryItem(beverages.get("Bon Bon Cerise12.0null2019"), locations.get("S1"), 1, date, date));
+//        inventoryItems.add(new InventoryItem(beverages.get("Bon Bon Cerise12.0null2019"), locations.get("S1"), 1, date, date));
 //        inventoryItems.add(new InventoryItem(beverages.get("One Ping Only12.0null2022"), locations.get("S1"),3, date, date));
 //        inventoryItems.add(new InventoryItem(beverages.get("Vanilla Bean16.0null2022"), locations.get("S1"),1, date, date));
 //        inventoryItems.add(new InventoryItem(beverages.get("A Brillaintly Deformed Corpse Neverless25.0null2022"), locations.get("S1"),1, date, date));
@@ -295,7 +308,23 @@ public class InventoryServiceImpl implements InventoryService {
 //        inventoryItems.add(new InventoryItem(beverages.get("Dark Allyance12.0null2022"), locations.get("S1"),2, date, date));
 //        inventoryItems.add(new InventoryItem(beverages.get("Lone Buffalo500.0BBA Aged2022"), locations.get("S1"),1, date, date));
 //        inventoryItems.add(new InventoryItem(beverages.get("Partners in Crema12.0null2022"), locations.get("S1"),0, date, date));
+
+//        inventoryItems.add(new InventoryItem(beverages.get("Bon Bon Cerise12.0null2019"), locations.get("S1"), 1, date, date));
+        inventoryItems.add(new InventoryItem(beverageRepository.findById(109L).orElse(new Beverage()),locations.get("A1"),1, date, date));
+        inventoryItems.add(new InventoryItem(beverageRepository.findById(110L).orElse(new Beverage()),locations.get("A5"),1, date, date));
+        inventoryItems.add(new InventoryItem(beverageRepository.findById(111L).orElse(new Beverage()),locations.get("B2"),1, date, date));
+        inventoryItems.add(new InventoryItem(beverageRepository.findById(112L).orElse(new Beverage()),locations.get("B3"),1, date, date));
+        inventoryItems.add(new InventoryItem(beverageRepository.findById(113L).orElse(new Beverage()),locations.get("B4"),1, date, date));
+        inventoryItems.add(new InventoryItem(beverageRepository.findById(114L).orElse(new Beverage()),locations.get("C1"),1, date, date));
+        inventoryItems.add(new InventoryItem(beverageRepository.findById(115L).orElse(new Beverage()),locations.get("C4"),1, date, date));
+        inventoryItems.add(new InventoryItem(beverageRepository.findById(116L).orElse(new Beverage()),locations.get("C5"),1, date, date));
+        inventoryItems.add(new InventoryItem(beverageRepository.findById(117L).orElse(new Beverage()),locations.get("L"),1, date, date));
+        inventoryItems.add(new InventoryItem(beverageRepository.findById(118L).orElse(new Beverage()),locations.get("L"),1, date, date));
+        inventoryItems.add(new InventoryItem(beverageRepository.findById(119L).orElse(new Beverage()),locations.get("L"),1, date, date));
+        inventoryItems.add(new InventoryItem(beverageRepository.findById(120L).orElse(new Beverage()),locations.get("C3"),1, date, date));
+        inventoryItems.add(new InventoryItem(beverageRepository.findById(121L).orElse(new Beverage()),locations.get("R"),1, date, date));
         inventoryRepository.saveAll(inventoryItems);
+//        beverageRepository.saveAll(beverages);
 
 
 

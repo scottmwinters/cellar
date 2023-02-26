@@ -50,23 +50,11 @@ public class BeverageController {
 //        return beverageService.create(beverageOld);
 //    }
 //
-//    @PostMapping("/drink")
-//    @CrossOrigin(origins = {"http://192.168.86.71:3000", "http://localhost:3000"})
-//    public void drink(@RequestBody int beverageId) {
-//        System.out.println("removing 1 beverage: " + beverageId);
-//        beverageService.drinkOneById(beverageId);
-//    }
-
-    @GetMapping("/lightsOn")
+    @PostMapping("/drink")
     @CrossOrigin(origins = {"http://192.168.86.71:3000", "http://localhost:3000"})
-    public String lightsOn() {
-        return lightsService.turnOn();
-    }
-
-    @GetMapping("/lightsOff")
-    @CrossOrigin(origins = {"http://192.168.86.71:3000", "http://localhost:3000"})
-    public void lightsOff() {
-        System.out.println(lightsService.turnOff());
+    public void drink(@RequestBody int beverageId) {
+        System.out.println("removing 1 beverage: " + beverageId);
+//        inventoryService.drinkOneById(beverageId);
     }
 
     @GetMapping("/shit")
@@ -82,37 +70,3 @@ public class BeverageController {
     }
 
 }
-
-/*
-Sample create:
-        Beverage bev = new Beverage();
-
-        Name name = new Name();
-        name.setName("KBS");
-        bev.setName(name);
-
-        Maker maker = new Maker();
-        maker.setName("Founders");
-        bev.setMaker(maker);
-
-        Style style = new Style();
-        style.setType("Beer");
-        style.setName("Stout");
-        style.setSubStyle("Imperial Stout");
-        bev.setStyle(style);
-
-        bev.setAbv(12.2);
-
-        Variant variant = new Variant();
-        variant.setName("Maple Mackinac Fudge");
-        bev.setVariant(variant);
-
-        Size size = new Size();
-        size.setAmount(12.0);
-        size.setUnit("oz");
-
-
-
-
-        beverageService.addBeverage(bev);
- */

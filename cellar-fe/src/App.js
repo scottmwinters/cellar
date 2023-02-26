@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom"
 function App() {
   return (
     <>
+      <link href="https://fonts.googleapis.com/css?family=Cuprum&display=swap" rel="stylesheet"></link>
       <Navbar />
       <div className="container">
         <Routes>

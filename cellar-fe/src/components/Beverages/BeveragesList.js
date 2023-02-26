@@ -11,14 +11,13 @@ const BeveragesList = (props) => {
   const onDrinkBeverageHandler = (beverageId) => {
     props.onDrinkBeverage(beverageId);
   };
-
   return (
     <ul className="beverages-list">
       {props.items.length > 0 &&
         props.items.map((inventoryItem) => (
           <BeverageItem
             key={inventoryItem.id}
-            name={inventoryItem.beverage.name.name}
+            name={inventoryItem.beverage.name?.name}
             style={inventoryItem.beverage.style.name}
             substyle={inventoryItem.beverage.style.substyle}
             barrel={inventoryItem.beverage.barrel}
@@ -32,7 +31,7 @@ const BeveragesList = (props) => {
             vintage={inventoryItem.beverage.vintage}
             size={inventoryItem.beverage.size.amount}
             sizeUnits={inventoryItem.beverage.size.unit}
-            storageLocation={inventoryItem.storageLocation}
+            storageLocation={inventoryItem.location.name}
             id={inventoryItem.id}
             onDrinkBeverage={onDrinkBeverageHandler}
           />

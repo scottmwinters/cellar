@@ -1,3 +1,8 @@
+* {
+  font-family: 'Cuprum';
+  font-weight: 400;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
