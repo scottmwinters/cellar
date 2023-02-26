@@ -5,6 +5,8 @@ Welcome to The Cellar. A little hacker project I've been having fun with. This i
 ![](demo/screen-recording.gif)
 ![](demo/cabinet.gif)
 
+ (note - gifs are not synced)
+
 # todos
 * Unit tests
 * Response values from the microcontroller - probably need to handle this async in java
