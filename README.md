@@ -11,3 +11,5 @@ Welcome to The Cellar. A little hacker project I've been having fun with. This i
 * Support text search - do fuzzy matching on beverage names, maker names, styles
 * moduls for adding new items and drink confirmations
 * property files and using properties instead of hardcoded values
+* manage database from liquibase
+* put demo data in the repo
